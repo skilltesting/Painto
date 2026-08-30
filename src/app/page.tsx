@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { PenLine } from 'lucide-react';
-import { createClient } from '@/lib/supabase'; 
-import GoogleSignInButton from '@/components/AuthButton'; 
+import { createClient } from '@/lib/supabase';
+import AuthButton from '@/components/AuthButton';
 
 export default async function HomePage() {
   const supabase = createClient();
@@ -26,7 +26,7 @@ export default async function HomePage() {
           </div>
         </div>
 
-        <GoogleSignInButton />
+        <AuthButton />
 
         <p className="mt-4 text-center text-xs text-slate-500">
           Your drawings autosave to your account as you work.
@@ -35,5 +35,3 @@ export default async function HomePage() {
     </main>
   );
 }
-
-
