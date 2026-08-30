@@ -1,5 +1,3 @@
-// File path: src/lib/supabase-server.ts
-
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 
@@ -31,5 +29,4 @@ export async function createServerSupabaseClient() {
   );
 }
 
-// Backward compatibility alias so legacy `createClient()` calls don't crash
 export const createClient = createServerSupabaseClient;
