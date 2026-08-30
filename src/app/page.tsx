@@ -3,6 +3,9 @@ import { PenLine } from 'lucide-react';
 import { createClient } from '../lib/supabase';
 import AuthButton from '../components/AuthButton';
 
+// Prevents Next.js from attempting static pre-rendering during 'next build'
+export const dynamic = 'force-dynamic';
+
 export default async function HomePage() {
   const supabase = createClient();
   const {
