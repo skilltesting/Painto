@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { createClient } from '@/lib/supabase/supabase';
+import { createBrowserSupabaseClient } from '@/lib/supabase';
 import type { LayerState, ProjectMetadata } from '@/lib/types';
 
 export function useAutosave(
@@ -20,7 +20,7 @@ export function useAutosave(
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
     timeoutRef.current = setTimeout(async () => {
-      const supabase = createClient();
+      const supabase = createBrowserSupabaseClient();
       const { data: userData } = await supabase.auth.getUser();
       if (!userData.user) return;
 
