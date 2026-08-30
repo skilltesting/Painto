@@ -1,8 +1,6 @@
 import { redirect } from 'next/navigation';
 import { PenLine } from 'lucide-react';
-// 1. Updated path to match src/lib/supabase.ts (or src/lib/supabase/supabase.ts)
 import { createClient } from '@/lib/supabase'; 
-// 2. Updated to default import (if AuthButton uses default export)
 import GoogleSignInButton from '@/components/AuthButton'; 
 
 export default async function HomePage() {
