@@ -1,15 +1,22 @@
+// File path: src/lib/supabase.ts
+
 import { createBrowserClient, createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 
-// Use this client inside Client Components ('use client')
-export const createBrowserSupabaseClient = () =>
-  createBrowserClient(
+/**
+ * Call this in Client Components ('use client')
+ */
+export function createBrowserSupabaseClient() {
+  return createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
+}
 
-// Use this client inside Server Components, Route Handlers, and Server Actions
-export const createServerSupabaseClient = async () => {
+/**
+ * Call this in Server Components, Route Handlers (route.ts), and Server Actions
+ */
+export async function createServerSupabaseClient() {
   const cookieStore = await cookies();
 
   return createServerClient(
@@ -26,10 +33,13 @@ export const createServerSupabaseClient = async () => {
               cookieStore.set(name, value, options)
             );
           } catch {
-            // Handled automatically in middleware
+            // Handled in middleware
           }
         },
       },
     }
   );
-};
+}
+
+// Backward compatibility alias so legacy `createClient()` calls don't crash
+export const createClient = createServerSupabaseClient;
