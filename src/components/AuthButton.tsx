@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { LogOut, Loader2 } from 'lucide-react';
-import { createClient } from '@/lib/supabase/supabase';
+import { createClient } from '@/lib/supabase';
 
 export function GoogleSignInButton({ redirectTo = '/draw' }: { redirectTo?: string }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -27,7 +27,7 @@ export function GoogleSignInButton({ redirectTo = '/draw' }: { redirectTo?: stri
     <button
       onClick={handleSignIn}
       disabled={isLoading}
-      className="flex w-full items-center justify-center gap-3 rounded-xl bg-graphite-50 px-5 py-3 text-sm font-medium text-graphite-950 shadow-panel transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-70"
+      className="flex w-full items-center justify-center gap-3 rounded-xl bg-slate-100 px-5 py-3 text-sm font-medium text-slate-900 shadow transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-70"
     >
       {isLoading ? (
         <Loader2 className="h-4 w-4 animate-spin" />
@@ -53,7 +53,7 @@ export function SignOutButton({ className = '' }: { className?: string }) {
     <button
       onClick={handleSignOut}
       disabled={isLoading}
-      className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-graphite-300 transition hover:bg-graphite-800 hover:text-graphite-50 disabled:opacity-60 ${className}`}
+      className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-300 transition hover:bg-slate-800 hover:text-white disabled:opacity-60 ${className}`}
     >
       {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <LogOut className="h-4 w-4" />}
       Sign out
@@ -83,4 +83,7 @@ function GoogleGlyph({ className = '' }: { className?: string }) {
     </svg>
   );
 }
+
+// Allows using "import AuthButton from '@/components/AuthButton'"
+export default GoogleSignInButton;
 
