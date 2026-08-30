@@ -1,12 +1,11 @@
 import { redirect } from 'next/navigation';
 import { PenLine } from 'lucide-react';
-import { createClient } from '../lib/supabase';
+import { createClient } from '../lib/supabase/supabase';
 import AuthButton from '../components/AuthButton';
 
 export const dynamic = 'force-dynamic';
 
 export default async function HomePage() {
-  // Add 'await' before createClient()
   const supabase = await createClient();
   const {
     data: { user },
@@ -38,5 +37,6 @@ export default async function HomePage() {
     </main>
   );
 }
+
 
 
