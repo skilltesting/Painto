@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { PenLine } from 'lucide-react';
-import { createServerSupabaseClient } from '@/lib/supabase';
+import { createServerSupabaseClient } from '@/lib/supabase-server';
 import AuthButton from '@/components/AuthButton';
 
 export const dynamic = 'force-dynamic';
