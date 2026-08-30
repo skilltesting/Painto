@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { PenLine } from 'lucide-react';
-import { createClient } from '@/lib/supabase';
-import AuthButton from '@/components/AuthButton';
+import { createClient } from '../lib/supabase';
+import AuthButton from '../components/AuthButton';
 
 export default async function HomePage() {
   const supabase = createClient();
@@ -35,3 +35,4 @@ export default async function HomePage() {
     </main>
   );
 }
+
